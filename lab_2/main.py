@@ -22,13 +22,14 @@ class Optimizer:
 
         for _ in range(self._generations):
             fitness = np.array([self._fitness_function(ind) for ind in population])
-            best_values.append(population.copy())
+            print(fitness)
 
             better_mask = fitness < np.array([self._fitness_function(ind) for ind in personal_best])
             personal_best[better_mask] = population[better_mask]
 
             if fitness.min() < self._fitness_function(global_best):
                 global_best = population[np.argmin(fitness)]
+                best_values.append(fitness.min())
 
             r1, r2 = np.random.rand(pop_size, self._dim), np.random.rand(pop_size, self._dim)
             velocity = w * velocity + a1 * r1 * (personal_best - population) + a2 * r2 * (global_best - population)

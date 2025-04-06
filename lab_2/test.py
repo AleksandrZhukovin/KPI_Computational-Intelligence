@@ -53,8 +53,8 @@ def plot_best_values(optimizer, name):
 
     for pop_size in pop_sizes:
         best_values = optimizer._particle_swarm(pop_size)
-        best_values = np.array(best_values)[:, :, 1]
-        plt.plot(range(len(best_values)), best_values.min(axis=1), label=f'Популяція {pop_size}')
+        best_values = np.array(best_values)
+        plt.plot(range(len(best_values)), best_values, label=f'Популяція {pop_size}')
 
     plt.xlabel('Покоління')
     plt.ylabel('f(x)')
