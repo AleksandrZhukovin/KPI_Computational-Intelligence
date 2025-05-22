@@ -75,7 +75,7 @@ def train_eval_model(params):
             return out
 
     model = CNN().to(device)
-    summary(model, input_size=(3, 32, 32))
+    # summary(model, input_size=(3, 32, 32))
     criterion = nn.NLLLoss()
 
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
